@@ -19,7 +19,7 @@ fi
 if [ $os_family = debian ]; then
   apt-get -y install apache2 \
   php7.2  php7.2-dev \
-  php7.2-curl php7.2-mbstring php7.2-mysql php7.2-xml php7.2-zip \
+  php7.2-curl php7.2-mysql php7.2-xml \
   php-pear \
   mariadb-client \
   libxml-simple-perl libperl5.26 libdbi-perl libnet-ip-perl libarchive-zip-perl make build-essential
