@@ -19,8 +19,8 @@ fi
 if [ $os_family = debian ]; then
   apt-get -y install apache2 \
   mariadb-client \
-  libxml-simple-perl libperl5.26 libdbi-perl libdbd-mysql-perl libapache-dbi-perl libnet-ip-perl libsoap-lite-perl libarchive-zip-perl make build-essential
-  cpan -y install XML::Entities
+  libxml-simple-perl libperl5.26 libdbi-perl libnet-ip-perl libarchive-zip-perl make build-essential
+  #cpan install XML::Entities
 
 elif [ $os_family = fedora ]; then
   yum -y install epel-release
