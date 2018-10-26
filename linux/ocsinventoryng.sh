@@ -18,8 +18,9 @@ fi
 # Install prereqs
 if [ $os_family = debian ]; then
   apt-get -y install apache2 \
-  mod_perl \
-  php7.2 \
+  php7.2  php7.2-dev \
+  php7.2-curl php7.2-mbstring php7.2-mysql php7.2-xml php7.2-zip \
+  php-pear \
   mariadb-client \
   libxml-simple-perl libperl5.26 libdbi-perl libnet-ip-perl libarchive-zip-perl make build-essential
   #cpan install XML::Entities
