@@ -26,8 +26,7 @@ if [ $os_family = debian ]; then
   php7.2-cgi php7.2-cli php7.2-curl php7.2-gd php7.2-json php7.2-ldap php7.2-mysql php7.2-opcache php7.2-snmp php7.2-xml php7.2-xmlrpc \
   php-pear \
   make gcc \
-  perl perl-modules-5.26 libnet-ip-perl libio-compress-perl libsoap-lite-perl \
-  libxml-simple-perl libperl5.26 libdbi-perl libarchive-zip-perl build-essential
+  perl perl-modules-5.26 libnet-ip-perl libxml-simple-perl libperl5.26 libdbi-perl libarchive-zip-perl build-essential
   #mariadb-server mariadb-client \
   #perl -MCPAN -e 'install Apache::DBI'
   #perl -MCPAN -e 'install Archive::Zip'
