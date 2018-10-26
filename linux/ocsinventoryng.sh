@@ -24,7 +24,8 @@ if [ $os_family = debian ]; then
   mariadb-client \
   libxml-simple-perl libperl5.26 libdbi-perl libnet-ip-perl libarchive-zip-perl make build-essential
   #cpan install XML::Entities
-
+  # restart apache
+  systemctl restart apache2
 elif [ $os_family = fedora ]; then
   yum -y install epel-release
   # Install more prereqs
