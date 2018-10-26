@@ -18,7 +18,7 @@ fi
 # Install prereqs
 if [ $os_family = debian ]; then
   apt-get -y install apache2 \
-  php7.2  php7.2-dev \
+  php7.2 libapache2-mod-php7.2 \
   php7.2-curl php7.2-mysql php7.2-xml \
   php-pear \
   mariadb-client \
