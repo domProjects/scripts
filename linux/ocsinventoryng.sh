@@ -28,8 +28,7 @@ if [ $os_family = debian ]; then
   php-pear \
   make gcc \
   perl perl-modules-5.26 libnet-ip-perl libxml-simple-perl libperl5.26 libdbi-perl libarchive-zip-perl build-essential
-  #mariadb-server mariadb-client \
-  #perl -MCPAN -e 'install Apache::DBI'
+  perl -MCPAN -e 'install Apache::DBI'
   #perl -MCPAN -e 'install Archive::Zip'
   #perl -MCPAN -e 'install Compress::Zlib'
   #perl -MCPAN -e 'install DBI'
