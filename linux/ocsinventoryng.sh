@@ -17,9 +17,11 @@ fi
 
 # Install prereqs
 if [ $os_family = debian ]; then
-  apt-get -y install php-curl apache2-dev gcc perl-modules-5.26 make apache2 php perl libapache2-mod-perl2 libapache2-mod-php \
-  libio-compress-perl libxml-simple-perl libdbi-perl libdbd-mysql-perl libapache-dbi-perl libsoap-lite-perl libnet-ip-perl php-mysql \
-  php-gd php7.2-dev php-mbstring php-soap php-xml php-pclzip libarchive-zip-perl php7.2-zip cpanminus
+  apt-get -y install apache2 \
+  mariadb-client \
+  libxml-simple-perl libperl5.26 libdbi-perl libdbd-mysql-perl libapache-dbi-perl libnet-ip-perl libsoap-lite-perl libarchive-zip-perl make build-essential
+  cpan -y install XML::Entities
+
 elif [ $os_family = fedora ]; then
   yum -y install epel-release
   # Install more prereqs
