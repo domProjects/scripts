@@ -15,15 +15,31 @@ else
   os_family=`cat /etc/*release | grep ^ID_LIKE= | cut -d= -f2 | sed 's/\"//g' | cut -d' ' -f2`
 fi
 
+# update
+apt-get clean
+apt-get update && apt-get dist-upgrade
+
 # Install prereqs
 if [ $os_family = debian ]; then
   apt-get -y install apache2 \
   php7.2 libapache2-mod-php7.2 \
   php7.2-cgi php7.2-cli php7.2-curl php7.2-gd php7.2-json php7.2-ldap php7.2-mysql php7.2-opcache php7.2-snmp php7.2-xml php7.2-xmlrpc \
   php-pear \
-  mariadb-client \
-  libxml-simple-perl libperl5.26 libdbi-perl libnet-ip-perl libarchive-zip-perl make build-essential
-  #cpan install XML::Entities
+  make gcc \
+  libxml-simple-perl libperl5.26 libdbi-perl libnet-ip-perl libarchive-zip-perl build-essential
+  #mariadb-server mariadb-client \
+  perl -MCPAN -e 'install Apache::DBI'
+  perl -MCPAN -e 'install Archive::Zip'
+  perl -MCPAN -e 'install Compress::Zlib'
+  perl -MCPAN -e 'install DBI'
+  perl -MCPAN -e 'install DBD::Mysql'
+  perl -MCPAN -e 'install Mojolicious::Lite'
+  perl -MCPAN -e 'install Net::IP'
+  perl -MCPAN -e 'install Plack::Handler'
+  perl -MCPAN -e 'install SOAP::Lite'
+  perl -MCPAN -e 'install XML::Entities'
+  perl -MCPAN -e 'install XML::Simple'
+  perl -MCPAN -e 'install YAML'
   # restart apache
   systemctl restart apache2
 elif [ $os_family = fedora ]; then
