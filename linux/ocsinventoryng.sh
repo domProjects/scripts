@@ -15,12 +15,13 @@ else
   os_family=`cat /etc/*release | grep ^ID_LIKE= | cut -d= -f2 | sed 's/\"//g' | cut -d' ' -f2`
 fi
 
-# update
-apt-get clean
-apt-get update && apt-get dist-upgrade
 
-# Install prereqs
 if [ $os_family = debian ]; then
+  # update
+  apt-get clean
+  apt-get update && apt-get dist-upgrade
+
+ # Install prereqs
   apt-get -y install apache2 \
   php7.2 libapache2-mod-php7.2 \
   php7.2-cgi php7.2-cli php7.2-curl php7.2-gd php7.2-json php7.2-ldap php7.2-mysql php7.2-opcache php7.2-snmp php7.2-xml php7.2-xmlrpc \
