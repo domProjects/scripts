@@ -36,26 +36,6 @@ while [ "$1" != "" ]; do
     shift
 done
 
-if [ -z "$ocsdbuser" ]; then
-    echo
-    read -p "Enter the OCS Inventory database username with access: " ocsdbuser
-    echo
-fi
-if [ -z "$ocsdbpwd" ]; then
-    echo
-    while true
-    do
-        read -s -p "Enter the OCS Inventory User Database Password: " ocsdbpwd
-        echo
-        read -s -p "Confirm the OCS Inventory User Database Password: " password2
-        echo
-        [ "$ocsdbpwd" = "$password2" ] && break
-        echo "Passwords don't match. Please try again."
-        echo
-    done
-    echo
-fi
-
 
 # add repository
 add-apt-repository universe
@@ -87,6 +67,27 @@ apt-get -y autoremove
 
 # clean folder temp
 rm -rf /tmp/*
+
+
+if [ -z "$ocsdbuser" ]; then
+    echo
+    read -p "Enter the OCS Inventory database username with access: " ocsdbuser
+    echo
+fi
+if [ -z "$ocsdbpwd" ]; then
+    echo
+    while true
+    do
+        read -s -p "Enter the OCS Inventory User Database Password: " ocsdbpwd
+        echo
+        read -s -p "Confirm the OCS Inventory User Database Password: " password2
+        echo
+        [ "$ocsdbpwd" = "$password2" ] && break
+        echo "Passwords don't match. Please try again."
+        echo
+    done
+    echo
+fi
 
 
 # Download OCS Inventory Server
