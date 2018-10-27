@@ -5,26 +5,9 @@ ocsversion="2.5"
 ocsdbhost="localhost"
 ocsdbhostport="3306"
 
-# get os from system
-os=`cat /etc/*release | grep ^ID= | cut -d= -f2 | sed 's/\"//g'`
-
-# get os family from system
-if [ $os = debian ] || [ $os = fedora ]; then
-  os_family=$os
-else
-  os_family=`cat /etc/*release | grep ^ID_LIKE= | cut -d= -f2 | sed 's/\"//g' | cut -d' ' -f2`
-fi
-
 
 # define apache/httpd config files location
-if [ $os_family = debian ]; then
-  httpconfiglocation=/etc/apache2/conf-available
-elif [ $os_family = fedora ]; then
-  httpconfiglocation=/etc/httpd/conf.d
-else
-  echo "unknown operating system family"
-  exit 1
-fi
+httpconfiglocation=/etc/apache2/conf-available
 
 # Get script arguments for non-interactive mode
 while [ "$1" != "" ]; do
@@ -74,47 +57,36 @@ if [ -z "$ocsdbpwd" ]; then
 fi
 
 
-#
-if [ $os_family = debian ]; then
-  # add repository
-  add-apt-repository universe
-  # Install prereqs
-  apt-get -y install apache2 \
-  php7.2 php7.2-cgi php7.2-cli php7.2-curl php7.2-gd php7.2-json php7.2-ldap php7.2-mysql php7.2-opcache php7.2-snmp php7.2-xml php7.2-xmlrpc \
-  php-pear \
-  make gcc \
-  perl perl-modules-5.26 libnet-ip-perl libxml-simple-perl libperl5.26 libdbi-perl libarchive-zip-perl build-essential
-  # install modul perl
-  perl -MCPAN -e 'install Apache::DBI'
-  perl -MCPAN -e 'install Net::IP'
-  perl -MCPAN -e 'install XML::Entities'
+# add repository
+add-apt-repository universe
+# Install prereqs
+apt-get -y install apache2 \
+php7.2 php7.2-cgi php7.2-cli php7.2-curl php7.2-gd php7.2-json php7.2-ldap php7.2-mysql php7.2-opcache php7.2-snmp php7.2-xml php7.2-xmlrpc \
+php-pear \
+make gcc \
+perl perl-modules-5.26 libnet-ip-perl libxml-simple-perl libperl5.26 libdbi-perl libarchive-zip-perl build-essential
+# install modul perl
+perl -MCPAN -e 'install Apache::DBI'
+perl -MCPAN -e 'install Net::IP'
+perl -MCPAN -e 'install XML::Entities'
 
-  # restart apache
-  systemctl restart apache2
+# restart apache
+systemctl restart apache2
 
-  # install data base
-  apt-get -y install mysql-server phpmyadmin
+# install data base
+apt-get -y install mysql-server phpmyadmin
 
-  # update apt
-  apt-get clean
-  apt-get -y update
-  apt-get -y upgrade
-  apt-get -y dist-upgrade
-  apt-get -y autoremove
-  apt-get -y upgrade
-  apt-get -y autoremove
+# update apt
+apt-get clean
+apt-get -y update
+apt-get -y upgrade
+apt-get -y dist-upgrade
+apt-get -y autoremove
+apt-get -y upgrade
+apt-get -y autoremove
 
-  # clean folder temp
-  rm -rf /tmp/*
-elif [ $os_family = fedora ]; then
-  # coming soon
-else
-  echo "unknown operating system family"
-  exit 1
-fi
-
-
-
+# clean folder temp
+rm -rf /tmp/*
 
 
 # Download OCS Inventory Server
@@ -176,16 +148,9 @@ sed -i "/$OCS_DB_PORT_RESTAPI_REPLACETEXT/c $OCS_DB_PORT_RESTAPI_NEW" $httpconfi
 sed -i "s/zreplaceholder/$ocsdbhostport/" $httpconfiglocation/zz-ocsinventory-restapi.conf
 
 # set permissions and restart service (enable config for debian)
-if [ $os_family = debian ]; then
-  # enable Apache configuration files
-  a2enconf ocsinventory-reports
-  a2enconf z-ocsinventory-server
-  a2enconf zz-ocsinventory-restapi
-  chown -R www-data:www-data /var/lib/ocsinventory-reports
-  service apache2 restart
-elif [ $os_family = fedora ]; then
-  # coming soon
-else
-  echo "unknown operating system family"
-  exit 1
-fi
+# enable Apache configuration files
+a2enconf ocsinventory-reports
+a2enconf z-ocsinventory-server
+a2enconf zz-ocsinventory-restapi
+chown -R www-data:www-data /var/lib/ocsinventory-reports
+service apache2 restart
