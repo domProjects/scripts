@@ -107,7 +107,7 @@ if [ $os_family = debian ]; then
   # clean folder temp
   rm -rf /tmp/*
 elif [ $os_family = fedora ]; then
-
+  # coming soon
 else
   echo "unknown operating system family"
   exit 1
@@ -184,7 +184,7 @@ if [ $os_family = debian ]; then
   chown -R www-data:www-data /var/lib/ocsinventory-reports
   service apache2 restart
 elif [ $os_family = fedora ]; then
-
+  # coming soon
 else
   echo "unknown operating system family"
   exit 1
