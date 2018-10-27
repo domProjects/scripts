@@ -5,7 +5,6 @@ ocsversion="2.5"
 ocsdbhost="localhost"
 ocsdbhostport="3306"
 
-
 # define apache/httpd config files location
 httpconfiglocation=/etc/apache2/conf-available
 
@@ -39,6 +38,16 @@ done
 
 # add repository
 add-apt-repository universe
+
+# update apt
+apt-get clean
+apt-get -y update
+apt-get -y upgrade
+apt-get -y dist-upgrade
+apt-get -y autoremove
+apt-get -y upgrade
+apt-get -y autoremove
+
 # Install prereqs
 apt-get -y install apache2 \
 php7.2 php7.2-cgi php7.2-cli php7.2-curl php7.2-gd php7.2-json php7.2-ldap php7.2-mysql php7.2-opcache php7.2-snmp php7.2-xml php7.2-xmlrpc \
