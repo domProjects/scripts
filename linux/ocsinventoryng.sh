@@ -15,13 +15,10 @@ else
   os_family=`cat /etc/*release | grep ^ID_LIKE= | cut -d= -f2 | sed 's/\"//g' | cut -d' ' -f2`
 fi
 
-
+#
 if [ $os_family = debian ]; then
-  #
+  # add repository
   add-apt-repository universe
-  # update
-  apt-get clean
-  apt-get update && apt-get dist-upgrade
   # Install prereqs
   apt-get -y install apache2 \
   php7.2 \
@@ -47,8 +44,15 @@ if [ $os_family = debian ]; then
   # install data base
   apt-get -y install mysql-server phpmyadmin
 
-  # clean apt
-  apt -y autoremove
+  # update apt
+  apt-get clean
+  apt-get -y update
+  apt-get -y upgrade
+  apt-get -y dist-upgrade
+  apt-get -y autoremove
+  apt-get -y upgrade
+  apt-get -y autoremove
+
   # clean folder temp
   rm -rf /tmp/*
 elif [ $os_family = fedora ]; then
