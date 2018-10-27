@@ -31,8 +31,8 @@ if [ $os_family = debian ]; then
   mysql-server phpmyadmin \
   perl perl-modules-5.26 libnet-ip-perl libxml-simple-perl libperl5.26 libdbi-perl libarchive-zip-perl build-essential
   perl -MCPAN -e 'install Apache::DBI'
-  perl -MCPAN -e 'install Archive::Zip'
-  #perl -MCPAN -e 'install Compress::Zlib'
+  ##perl -MCPAN -e 'install Archive::Zip'
+  perl -MCPAN -e 'install Compress::Zlib'
   #perl -MCPAN -e 'install DBI'
   #perl -MCPAN -e 'install DBD::Mysql'
   #perl -MCPAN -e 'install Mojolicious::Lite'
