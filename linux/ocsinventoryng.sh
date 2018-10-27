@@ -32,7 +32,7 @@ if [ $os_family = debian ]; then
   # install modul perl
   perl -MCPAN -e 'install Apache::DBI'
   ##perl -MCPAN -e 'install Archive::Zip'
-  perl -MCPAN -e 'install Compress::Zlib'
+  ##perl -MCPAN -e 'install Compress::Zlib'
   #perl -MCPAN -e 'install DBI'
   #perl -MCPAN -e 'install DBD::Mysql'
   #perl -MCPAN -e 'install Mojolicious::Lite'
@@ -46,6 +46,9 @@ if [ $os_family = debian ]; then
 
   # install data base
   apt-get -y install mysql-server phpmyadmin
+
+  # clean apt
+  apt autoremove
 elif [ $os_family = fedora ]; then
   yum -y install epel-release
   # Install more prereqs
