@@ -17,11 +17,12 @@ fi
 
 
 if [ $os_family = debian ]; then
+  #
+  add-apt-repository universe
   # update
   apt-get clean
   apt-get update && apt-get dist-upgrade
-
- # Install prereqs
+  # Install prereqs
   apt-get -y install apache2 \
   php7.2 libapache2-mod-php7.2 \
   php7.2-cgi php7.2-cli php7.2-curl php7.2-gd php7.2-json php7.2-ldap php7.2-mysql php7.2-opcache php7.2-snmp php7.2-xml php7.2-xmlrpc \
