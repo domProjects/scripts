@@ -49,6 +49,8 @@ if [ $os_family = debian ]; then
 
   # clean apt
   apt autoremove
+  # clean folder temp
+  rm -rf /tmp/*
 elif [ $os_family = fedora ]; then
   yum -y install epel-release
   # Install more prereqs
