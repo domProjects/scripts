@@ -48,7 +48,7 @@ if [ $os_family = debian ]; then
   apt-get -y install mysql-server phpmyadmin
 
   # clean apt
-  apt autoremove
+  apt -y autoremove
   # clean folder temp
   rm -rf /tmp/*
 elif [ $os_family = fedora ]; then
