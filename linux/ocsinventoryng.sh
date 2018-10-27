@@ -51,10 +51,9 @@ apt-get -y autoremove
 # Install prereqs
 apt-get -y install apache2 php7.2 php-pear make gcc \
 php7.2-cgi php7.2-curl php7.2-gd php7.2-ldap php7.2-mysql php7.2-snmp php7.2-xmlrpc \
-build-essential libnet-ip-perl libxml-simple-perl libdbi-perl libarchive-zip-perl build-essential
+build-essential libnet-ip-perl libxml-simple-perl libdbi-perl libarchive-zip-perl
 # install modul perl
 perl -MCPAN -e 'install Apache::DBI'
-perl -MCPAN -e 'install Net::IP'
 perl -MCPAN -e 'install XML::Entities'
 
 # restart apache
