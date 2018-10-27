@@ -28,21 +28,24 @@ if [ $os_family = debian ]; then
   php7.2-cgi php7.2-cli php7.2-curl php7.2-gd php7.2-json php7.2-ldap php7.2-mysql php7.2-opcache php7.2-snmp php7.2-xml php7.2-xmlrpc \
   php-pear \
   make gcc \
-  mysql-server phpmyadmin \
   perl perl-modules-5.26 libnet-ip-perl libxml-simple-perl libperl5.26 libdbi-perl libarchive-zip-perl build-essential
+  # install modul perl
   perl -MCPAN -e 'install Apache::DBI'
   ##perl -MCPAN -e 'install Archive::Zip'
   perl -MCPAN -e 'install Compress::Zlib'
   #perl -MCPAN -e 'install DBI'
   #perl -MCPAN -e 'install DBD::Mysql'
   #perl -MCPAN -e 'install Mojolicious::Lite'
-  #perl -MCPAN -e 'install Net::IP'
+  perl -MCPAN -e 'install Net::IP'
   #perl -MCPAN -e 'install Plack::Handler'
   #perl -MCPAN -e 'install SOAP::Lite'
-  #perl -MCPAN -e 'install XML::Entities'
+  perl -MCPAN -e 'install XML::Entities'
   #perl -MCPAN -e 'install XML::Simple'
   # restart apache
   systemctl restart apache2
+
+  # install data base
+  apt-get -y install mysql-server phpmyadmin
 elif [ $os_family = fedora ]; then
   yum -y install epel-release
   # Install more prereqs
