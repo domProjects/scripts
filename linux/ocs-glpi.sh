@@ -50,5 +50,5 @@ if [ $? -ne 0 ]; then
     echo "https://github.com/PluginsOCSInventory-NG/security/releases/download/${ocssecurity}/security.zip"
     exit
 fi
-mv officepack.zip /usr/share/ocsinventory-reports/ocsreports/download/
+mv security.zip /usr/share/ocsinventory-reports/ocsreports/download/
 
