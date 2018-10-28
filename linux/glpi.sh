@@ -51,20 +51,20 @@ apt-get -y install mysql-server
 apt-get -y install phpmyadmin
 
 #
-#cd /tmp/
+cd /tmp/
 
 #
-#wget -O glpi-${glpiversion}.tgz https://github.com/glpi-project/glpi/releases/download/${glpiversion}/glpi-${glpiversion}.tgz
+wget -O glpi-${glpiversion}.tgz https://github.com/glpi-project/glpi/releases/download/${glpiversion}/glpi-${glpiversion}.tgz
 
-#if [ $? -ne 0 ]; then
-  #echo "Failed to download glpi-${glpiversion}.tgz"
-  #echo "https://github.com/glpi-project/glpi/releases/download/${glpiversion}/glpi-${glpiversion}.tgz"
-  #exit
-#fi
+if [ $? -ne 0 ]; then
+  echo "Failed to download glpi-${glpiversion}.tgz"
+  echo "https://github.com/glpi-project/glpi/releases/download/${glpiversion}/glpi-${glpiversion}.tgz"
+  exit
+fi
 
-#tar -xvf glpi-${glpiversion}.tgz
-#mv glpi /var/www/html/
-#chmod 755 -R /var/www/html/
+tar -xvf glpi-${glpiversion}.tgz
+mv glpi /var/www/html/
+chmod 755 -R /var/www/html/
 
 # clean install
 rm -rf /tmp/*
