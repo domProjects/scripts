@@ -24,3 +24,14 @@ fi
 
 #
 mv teamviewer.zip /usr/share/ocsinventory-reports/ocsreports/download/
+
+#
+wget -O networkshare.zip https://github.com/PluginsOCSInventory-NG/networkshare/releases/download/1.0/networkshare.zip
+if [ $? -ne 0 ]; then
+    echo "Failed to download networkshare.zip"
+    echo "https://github.com/PluginsOCSInventory-NG/networkshare/releases/download/1.0/networkshare.zip"
+    exit
+fi
+
+#
+mv networkshare.zip /usr/share/ocsinventory-reports/ocsreports/download/
