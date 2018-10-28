@@ -2,6 +2,7 @@
 
 # glpi
 glpiversion="9.3.2"
+pluginglpiocsversion="1.5.4"
 
 #
 clear
@@ -20,8 +21,8 @@ apt-get -y install make gcc
 
 #
 apt-get -y install apache2
-systemctl enable apache2
-systemctl start apache2
+#systemctl enable apache2
+#systemctl start apache2
 
 #
 apt-get -y install build-essential
@@ -47,25 +48,37 @@ apt-get -y install php-pear
 apt-get -y install libapache2-mod-php7.2
 
 # install data base
-apt-get -y install mysql-server
-apt-get -y install phpmyadmin
+#apt-get -y install mysql-server
+#apt-get -y install phpmyadmin
 
 #
 cd /tmp/
 
 #
-wget -O glpi-${glpiversion}.tgz https://github.com/glpi-project/glpi/releases/download/${glpiversion}/glpi-${glpiversion}.tgz
+#wget -O glpi-${glpiversion}.tgz https://github.com/glpi-project/glpi/releases/download/${glpiversion}/glpi-${glpiversion}.tgz
+
+#if [ $? -ne 0 ]; then
+  #echo "Failed to download glpi-${glpiversion}.tgz"
+  #echo "https://github.com/glpi-project/glpi/releases/download/${glpiversion}/glpi-${glpiversion}.tgz"
+  #exit
+#fi
+
+#tar -xvf glpi-${glpiversion}.tgz
+#mv glpi /var/www/html/
+#chmod 755 -R /var/www/html/
+#chown -R www-data:www-data /var/www/html/
+
+#
+wget -O glpi-ocsinventoryng-${pluginglpiocsversion}.tar.gz https://github.com/pluginsGLPI/ocsinventoryng/releases/download/${pluginglpiocsversion}/glpi-ocsinventoryng-${pluginglpiocsversion}.tar.gz
 
 if [ $? -ne 0 ]; then
-  echo "Failed to download glpi-${glpiversion}.tgz"
-  echo "https://github.com/glpi-project/glpi/releases/download/${glpiversion}/glpi-${glpiversion}.tgz"
+  echo "Failed to download glpi-ocsinventoryng-${pluginglpiocsversion}.tar.gz"
+  echo "https://github.com/pluginsGLPI/ocsinventoryng/releases/download/${pluginglpiocsversion}/glpi-ocsinventoryng-${pluginglpiocsversion}.tar.gz"
   exit
 fi
 
-tar -xvf glpi-${glpiversion}.tgz
-mv glpi /var/www/html/
-chmod 755 -R /var/www/html/
-chown -R www-data:www-data /var/www/html/
+tar -xvf glpi-ocsinventoryng-${pluginglpiocsversion}.tar.gz
+mv glpi-ocsinventoryng /var/www/html/glpi/plugins/
 
 # clean install
 rm -rf /tmp/*
