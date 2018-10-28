@@ -78,7 +78,7 @@ if [ $? -ne 0 ]; then
 fi
 
 tar -xvf glpi-ocsinventoryng-${pluginglpiocsversion}.tar.gz
-mv glpi-ocsinventoryng /var/www/html/glpi/plugins/
+mv ocsinventoryng /var/www/html/glpi/plugins/
 
 # clean install
 rm -rf /tmp/*
