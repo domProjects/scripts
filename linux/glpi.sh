@@ -21,26 +21,26 @@ systemctl enable apache2
 systemctl start apache2
 
 #
-apt-get -y build-essential php
-apt-get php-apcu
-apt-get php-cas
-apt-get php-curl
-apt-get php-gd
-apt-get php-gettext
-apt-get php-imagick
-apt-get php-imap
-apt-get php-intl
-apt-get php-ldap
-apt-get php-mbstring
-apt-get php-memcache
-apt-get php-mysql
-apt-get php-pear
-apt-get php-pspell
-apt-get php-recode
-apt-get php-tidy
-apt-get php-xmlrpc
-apt-get php-xsl
-apt-get libapache2-mod-php
+apt-get -y install build-essential php
+apt-get install php-apcu
+apt-get install php-cas
+apt-get install php-curl
+apt-get install php-gd
+apt-get install php-gettext
+apt-get install php-imagick
+apt-get install php-imap
+apt-get install php-intl
+apt-get install php-ldap
+apt-get install php-mbstring
+apt-get install php-memcache
+apt-get install php-mysql
+apt-get install php-pear
+apt-get install php-pspell
+apt-get install php-recode
+apt-get install php-tidy
+apt-get install php-xmlrpc
+apt-get install php-xsl
+apt-get install libapache2-mod-php
 
 # install data base
 #apt-get -y install mysql-server phpmyadmin
