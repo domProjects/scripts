@@ -66,5 +66,6 @@ apt-get -y install mysql-server
 #mv glpi /var/www/html/
 #chmod 755 -R /var/www/html/
 
-# clean folder temp
+# clean install
 rm -rf /tmp/*
+rm -rf /glpi.sh*
