@@ -5,7 +5,9 @@
 # https://github.com/PluginsOCSInventory-NG
 
 #
-ocsplugin_teamviewer="1.5.4"
+ocsteamviewer="1.1"
+ocsnetworkshare="1.0"
+ocsofficepack="2.0"
 
 #
 clear
@@ -13,25 +15,30 @@ clear
 #
 cd /tmp/
 
-
 #
-wget -O teamviewer.zip https://github.com/PluginsOCSInventory-NG/teamviewer/releases/download/1.1/teamviewer.zip
+wget -O teamviewer.zip https://github.com/PluginsOCSInventory-NG/teamviewer/releases/download/${ocsteamviewer}/teamviewer.zip
 if [ $? -ne 0 ]; then
     echo "Failed to download teamviewer.zip"
-    echo "https://github.com/PluginsOCSInventory-NG/teamviewer/releases/download/1.1/teamviewer.zip"
+    echo "https://github.com/PluginsOCSInventory-NG/teamviewer/releases/download/${ocsteamviewer}/teamviewer.zip"
     exit
 fi
-
-#
 mv teamviewer.zip /usr/share/ocsinventory-reports/ocsreports/download/
 
 #
-wget -O networkshare.zip https://github.com/PluginsOCSInventory-NG/networkshare/releases/download/1.0/networkshare.zip
+wget -O networkshare.zip https://github.com/PluginsOCSInventory-NG/networkshare/releases/download/${ocsnetworkshare}/networkshare.zip
 if [ $? -ne 0 ]; then
     echo "Failed to download networkshare.zip"
-    echo "https://github.com/PluginsOCSInventory-NG/networkshare/releases/download/1.0/networkshare.zip"
+    echo "https://github.com/PluginsOCSInventory-NG/networkshare/releases/download/${ocsnetworkshare}/networkshare.zip"
     exit
 fi
+mv networkshare.zip /usr/share/ocsinventory-reports/ocsreports/download/
 
 #
-mv networkshare.zip /usr/share/ocsinventory-reports/ocsreports/download/
+wget -O officepack.zip https://github.com/PluginsOCSInventory-NG/officepack/releases/download/${ocsofficepack}/officepack.zip
+if [ $? -ne 0 ]; then
+    echo "Failed to download officepack.zip"
+    echo "https://github.com/PluginsOCSInventory-NG/officepack/releases/download/${ocsofficepack}/officepack.zip"
+    exit
+fi
+mv officepack.zip /usr/share/ocsinventory-reports/ocsreports/download/
+
