@@ -48,7 +48,7 @@ apt-get -y install libapache2-mod-php7.2
 
 # install data base
 apt-get -y install mysql-server
-#apt-get -y install phpmyadmin
+apt-get -y install phpmyadmin
 
 #
 #cd /tmp/
