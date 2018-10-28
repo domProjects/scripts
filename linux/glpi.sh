@@ -65,6 +65,7 @@ fi
 tar -xvf glpi-${glpiversion}.tgz
 mv glpi /var/www/html/
 chmod 755 -R /var/www/html/
+chown -R www-data:www-data /var/www/html/
 
 # clean install
 rm -rf /tmp/*
