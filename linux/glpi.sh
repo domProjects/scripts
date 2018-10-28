@@ -82,4 +82,4 @@ mv glpi-ocsinventoryng /var/www/html/glpi/plugins/
 
 # clean install
 rm -rf /tmp/*
-rm -rf /glpi.sh*
+rm -rf ./glpi.sh*
