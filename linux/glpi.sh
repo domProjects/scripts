@@ -24,29 +24,30 @@ systemctl enable apache2
 systemctl start apache2
 
 #
-apt-get -y install build-essential php7.2
-apt-get install php7.2-apcu
-apt-get install php7.2-curl
-apt-get install php7.2-gd
-apt-get install php7.2-imap
-apt-get install php7.2-intl
-apt-get install php7.2-ldap
-apt-get install php7.2-mbstring
-apt-get install php7.2-mysql
-apt-get install php7.2-pspell
-apt-get install php7.2-recode
-apt-get install php7.2-tidy
-apt-get install php7.2-xmlrpc
-apt-get install php7.2-xsl
-apt-get install php-cas
-apt-get install php-gettext
-apt-get install php-imagick
-apt-get install php-memcache
-apt-get install php-pear
-apt-get install libapache2-mod-php7.2
+apt-get -y install build-essential
+apt-get -y install php7.2
+apt-get -y install php7.2-apcu
+apt-get -y install php7.2-curl
+apt-get -y install php7.2-gd
+apt-get -y install php7.2-imap
+apt-get -y install php7.2-intl
+apt-get -y install php7.2-ldap
+apt-get -y install php7.2-mbstring
+apt-get -y install php7.2-mysql
+apt-get -y install php7.2-pspell
+apt-get -y install php7.2-recode
+apt-get -y install php7.2-tidy
+apt-get -y install php7.2-xmlrpc
+apt-get -y install php7.2-xsl
+apt-get -y install php-cas
+apt-get -y install php-gettext
+apt-get -y install php-imagick
+apt-get -y install php-memcache
+apt-get -y install php-pear
+apt-get -y install libapache2-mod-php7.2
 
 # install data base
-#apt-get -y install mysql-server phpmyadmin
+apt-get -y install mysql-server phpmyadmin
 
 #
 #cd /tmp/
