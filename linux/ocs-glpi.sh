@@ -8,6 +8,7 @@
 ocsteamviewer="1.1"
 ocsnetworkshare="1.0"
 ocsofficepack="2.0"
+ocssecurity="1.1"
 
 #
 clear
@@ -38,6 +39,15 @@ wget -O officepack.zip https://github.com/PluginsOCSInventory-NG/officepack/rele
 if [ $? -ne 0 ]; then
     echo "Failed to download officepack.zip"
     echo "https://github.com/PluginsOCSInventory-NG/officepack/releases/download/${ocsofficepack}/officepack.zip"
+    exit
+fi
+mv officepack.zip /usr/share/ocsinventory-reports/ocsreports/download/
+
+#
+wget -O security.zip https://github.com/PluginsOCSInventory-NG/security/releases/download/${ocssecurity}/security.zip
+if [ $? -ne 0 ]; then
+    echo "Failed to download security.zip"
+    echo "https://github.com/PluginsOCSInventory-NG/security/releases/download/${ocssecurity}/security.zip"
     exit
 fi
 mv officepack.zip /usr/share/ocsinventory-reports/ocsreports/download/
