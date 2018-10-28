@@ -23,4 +23,4 @@ if [ $? -ne 0 ]; then
 fi
 
 #
-mv teamviewer.zip /etc/ocsinventory-server/plugins/
+mv teamviewer.zip /usr/share/ocsinventory-reports/ocsreports/download/
