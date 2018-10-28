@@ -55,18 +55,18 @@ apt-get -y install libapache2-mod-php7.2
 cd /tmp/
 
 #
-#wget -O glpi-${glpiversion}.tgz https://github.com/glpi-project/glpi/releases/download/${glpiversion}/glpi-${glpiversion}.tgz
+wget -O glpi-${glpiversion}.tgz https://github.com/glpi-project/glpi/releases/download/${glpiversion}/glpi-${glpiversion}.tgz
 
-#if [ $? -ne 0 ]; then
-  #echo "Failed to download glpi-${glpiversion}.tgz"
-  #echo "https://github.com/glpi-project/glpi/releases/download/${glpiversion}/glpi-${glpiversion}.tgz"
-  #exit
-#fi
+if [ $? -ne 0 ]; then
+  echo "Failed to download glpi-${glpiversion}.tgz"
+  echo "https://github.com/glpi-project/glpi/releases/download/${glpiversion}/glpi-${glpiversion}.tgz"
+  exit
+fi
 
-#tar -xvf glpi-${glpiversion}.tgz
-#mv glpi /var/www/html/
-#chmod 755 -R /var/www/html/
-#chown -R www-data:www-data /var/www/html/
+tar -xvf glpi-${glpiversion}.tgz
+mv glpi /var/www/html/
+chmod 755 -R /var/www/html/
+chown -R www-data:www-data /var/www/html/
 
 #
 wget -O glpi-ocsinventoryng-${pluginglpiocsversion}.tar.gz https://github.com/pluginsGLPI/ocsinventoryng/releases/download/${pluginglpiocsversion}/glpi-ocsinventoryng-${pluginglpiocsversion}.tar.gz
