@@ -3,6 +3,9 @@
 # glpi
 glpiversion="9.3.2"
 
+#
+clear
+
 # add repository
 add-apt-repository universe
 
