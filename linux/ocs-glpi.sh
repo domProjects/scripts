@@ -9,14 +9,15 @@
 #
 clear
 
-# add repository
-add-apt-repository universe
 
 # update apt
 apt-get clean
 apt-get -y update
 apt-get -y upgrade
 apt-get -y dist-upgrade
+
+# add repository
+add-apt-repository universe
 
 # Install prereqs
 apt-get -y install build-essential
