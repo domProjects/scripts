@@ -50,6 +50,6 @@ cpan -i Parse::EDID
 wget https://github.com/OCSInventory-NG/UnixAgent/releases/download/v2.4.2/Ocsinventory-Unix-Agent-2.4.2.tar.gz
 tar –xvzf Ocsinventory-Unix-Agent-2.4.2.tar.gz
 cd Ocsinventory-Unix-Agent-2.4.2
-env PERL_AUTOINSTALL=1 perl Makefile.PL
+perl Makefile.PL
 make
 make install
