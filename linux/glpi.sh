@@ -4,6 +4,11 @@
 glpiversion="9.3.2"
 pluginglpiocsversion="1.5.4"
 
+ocsteamviewer="1.1"
+ocsnetworkshare="1.0"
+ocsofficepack="2.0"
+ocssecurity="1.1"
+
 #
 clear
 
@@ -55,20 +60,6 @@ apt-get -y install libapache2-mod-php7.2
 cd /tmp/
 
 #
-wget -O glpi-${glpiversion}.tgz https://github.com/glpi-project/glpi/releases/download/${glpiversion}/glpi-${glpiversion}.tgz
-
-if [ $? -ne 0 ]; then
-  echo "Failed to download glpi-${glpiversion}.tgz"
-  echo "https://github.com/glpi-project/glpi/releases/download/${glpiversion}/glpi-${glpiversion}.tgz"
-  exit
-fi
-
-tar -xvf glpi-${glpiversion}.tgz
-mv glpi /var/www/html/
-chmod 755 -R /var/www/html/
-chown -R www-data:www-data /var/www/html/
-
-#
 wget -O glpi-ocsinventoryng-${pluginglpiocsversion}.tar.gz https://github.com/pluginsGLPI/ocsinventoryng/releases/download/${pluginglpiocsversion}/glpi-ocsinventoryng-${pluginglpiocsversion}.tar.gz
 
 if [ $? -ne 0 ]; then
@@ -79,6 +70,49 @@ fi
 
 tar -xvf glpi-ocsinventoryng-${pluginglpiocsversion}.tar.gz
 mv ocsinventoryng /var/www/html/glpi/plugins/
+
+
+
+#
+cd /tmp/
+
+#
+wget -O teamviewer.zip https://github.com/PluginsOCSInventory-NG/teamviewer/releases/download/${ocsteamviewer}/teamviewer.zip
+if [ $? -ne 0 ]; then
+    echo "Failed to download teamviewer.zip"
+    echo "https://github.com/PluginsOCSInventory-NG/teamviewer/releases/download/${ocsteamviewer}/teamviewer.zip"
+    exit
+fi
+mv teamviewer.zip /usr/share/ocsinventory-reports/ocsreports/download/
+
+#
+wget -O networkshare.zip https://github.com/PluginsOCSInventory-NG/networkshare/releases/download/${ocsnetworkshare}/networkshare.zip
+if [ $? -ne 0 ]; then
+    echo "Failed to download networkshare.zip"
+    echo "https://github.com/PluginsOCSInventory-NG/networkshare/releases/download/${ocsnetworkshare}/networkshare.zip"
+    exit
+fi
+mv networkshare.zip /usr/share/ocsinventory-reports/ocsreports/download/
+
+#
+wget -O officepack.zip https://github.com/PluginsOCSInventory-NG/officepack/releases/download/${ocsofficepack}/officepack.zip
+if [ $? -ne 0 ]; then
+    echo "Failed to download officepack.zip"
+    echo "https://github.com/PluginsOCSInventory-NG/officepack/releases/download/${ocsofficepack}/officepack.zip"
+    exit
+fi
+mv officepack.zip /usr/share/ocsinventory-reports/ocsreports/download/
+
+#
+wget -O security.zip https://github.com/PluginsOCSInventory-NG/security/releases/download/${ocssecurity}/security.zip
+if [ $? -ne 0 ]; then
+    echo "Failed to download security.zip"
+    echo "https://github.com/PluginsOCSInventory-NG/security/releases/download/${ocssecurity}/security.zip"
+    exit
+fi
+mv security.zip /usr/share/ocsinventory-reports/ocsreports/download/
+
+
 
 # clean install
 rm -rf /tmp/*
