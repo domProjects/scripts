@@ -114,8 +114,6 @@ a2enconf z-ocsinventory-server
 a2enconf zz-ocsinventory-restapi
 chown -R www-data:www-data /var/lib/ocsinventory-reports
 
-systemctl reload apache2
-
 #
 cd /tmp/
 
@@ -187,3 +185,6 @@ mv ocsinventoryng /var/www/html/glpi/plugins/
 # clean install
 rm -rf /tmp/*
 rm -rf /ocs-glpi.sh*
+
+#
+systemctl reload apache2
