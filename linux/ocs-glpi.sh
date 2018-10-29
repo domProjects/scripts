@@ -19,6 +19,7 @@ apt-get -y upgrade
 apt-get -y dist-upgrade
 
 # Install prereqs
+apt-get -y install build-essential
 apt-get -y install cpanminus
 apt-get -y install make gcc
 
