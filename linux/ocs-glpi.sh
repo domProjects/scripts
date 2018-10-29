@@ -5,6 +5,7 @@
 # https://github.com/PluginsOCSInventory-NG
 
 #
+ocsversion="2.5"
 
 #
 clear
@@ -30,12 +31,26 @@ systemctl start apache2
 
 #
 apt-get -y install php7.2
+apt-get -y install php7.2-cgi
 apt-get -y install php7.2-curl
+apt-get -y install php7.2-gd
 apt-get -y install php7.2-mbstring
+apt-get -y install php7.2-mysql
 apt-get -y install php7.2-snmp
 apt-get -y install php7.2-soap
 apt-get -y install php7.2-xml
+apt-get -y install php7.2-xmlrpc
+apt-get -y install php-pear
+apt-get -y install libapache2-mod-php7.2
+apt-get -y install perl
+apt-get -y install perl-modules
 apt-get -y install libapache2-mod-perl2
+apt-get -y install libcompress-zlib-perl
+apt-get -y install libdbd-mysql-perl
+apt-get -y install libdbi-perl
+apt-get -y install libnet-ip-perl
+apt-get -y install libsoap-lite-perl
+apt-get -y install libxml-simple-perl
 
 #
 cpan -i Apache::DBI
@@ -46,9 +61,38 @@ cpan -i DBI
 cpan -i Mojolicious::Lite
 cpan -i Net::IP
 cpan -i Plack::Handler
+cpan -i Switch
 cpan -i XML::Entities
 cpan -i XML::Simple
 cpan -i YAML
 
+#
+apt-get -y install mysql-server
+apt-get -y install phpmyadmin
 
+#
+echo "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'your_password';"
+echo "FLUSH PRIVILEGES;"
+echo "exit;"
 
+mysql -u root -p
+
+# Download OCS Inventory Server
+wget -O OCSNG_UNIX_SERVER_${ocsversion}.tar.gz https://github.com/OCSInventory-NG/OCSInventory-ocsreports/releases/download/${ocsversion}/OCSNG_UNIX_SERVER_${ocsversion}.tar.gz
+if [ $? -ne 0 ]; then
+  echo "Failed to download OCSNG_UNIX_SERVER_${ocsversion}.tar.gz"
+  echo "https://github.com/OCSInventory-NG/OCSInventory-ocsreports/releases/download/${ocsversion}/OCSNG_UNIX_SERVER_${ocsversion}.tar.gz"
+  exit
+fi
+
+tar -xzf OCSNG_UNIX_SERVER_${ocsversion}.tar.gz
+
+cd OCSNG_UNIX_SERVER_${ocsversion}
+yes "" | sh setup.sh
+
+a2enconf ocsinventory-reports
+a2enconf z-ocsinventory-server
+a2enconf zz-ocsinventory-restapi
+chown -R www-data:www-data /var/lib/ocsinventory-reports
+
+systemctl reload apache2
