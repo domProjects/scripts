@@ -9,7 +9,6 @@
 #
 clear
 
-
 # update apt
 apt-get clean
 apt-get -y update
